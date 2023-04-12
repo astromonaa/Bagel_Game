@@ -1,0 +1,115 @@
+@import 'variables';
+@import 'mixins';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+.game {
+  max-width: $page-width;
+  margin: 150px auto 0;
+  display: flex;
+  justify-content: center;
+}
+.row {
+  display: flex;
+}
+.cell {
+  @include defaultCell();
+  position: relative;
+}
+.field {
+  background-color: gray;
+  border: 1px solid lightgray;
+  border-left: none;
+  background: url(../assets/tile-W.png);
+}
+.hero {
+  background: url(../assets/tile-P.png);
+  @include defaultCell();
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.tile {
+  background: url(../assets/tile-.png);
+}
+.enemy {
+  background: url(../assets/tile-E.png);
+  @include defaultCell();
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.hp {
+  background: url(../assets/tile-HP.png);
+  @include defaultCell()
+}
+.sword {
+  background: url(../assets/tile-SW.png);
+  @include defaultCell()
+}
+
+// Поворот налево
+.a {
+  transform: rotate(180deg);
+}
+
+.attacked {
+  opacity: 0;
+}
+.game-over {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &__content {
+    width: 200px;
+    height: 100px;
+    background-color: #fff;
+    border-radius: 0.3em;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+
+    b {
+      font-size: 22px;
+      font-weight: 700;
+    }
+    
+    button {
+      border: none;
+      outline: none;
+      padding: 4px;
+      border-radius: 5px;
+      width: 100%;
+      background-color: lightgreen;
+      cursor: pointer;
+      font-size: 16px;
+
+    }
+  }
+}
+
+.health-line {
+  width: 100%;
+  height: 4px;
+  position: absolute;
+  top: -4px;
+  .line-content {
+    width: 100%;
+    height: 100%;
+    background-color: red;
+    max-width: 20px!important;
+  }
+}
