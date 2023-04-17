@@ -1,9 +1,9 @@
-import { HERO, MOVE_KEYS, TILE, WALL, ATTACK_KEY, getAreas, ENEMY, HP, SWORD, DEFAUT_ID } from "../../core/utils";
+import { HERO, MOVE_KEYS, TILE, WALL, ATTACK_KEY, ENEMY, HP, SWORD, DEFAUT_ID } from "../../core/utils";
 
-export function getSegment(rowsCount, colsCount, row, col) {
+
+export function getSegment(row, col, areas) {
   let segment = WALL
-  const areas = getAreas(rowsCount, colsCount)
-  for (const area of areas.tile.areas) {
+  for (const area of areas) {
     if ((row >= area.from.row && col >= area.from.col) && (row <= area.to.row && col <= area.to.col)) {
       return segment = TILE
     }
@@ -11,15 +11,10 @@ export function getSegment(rowsCount, colsCount, row, col) {
   return segment
 }
 
-export function getPositionEl (type, rows, cols, root) {
-  const {startPosition} = getAreas()
+export function getPositionEl (rows, cols, root) {
   let posId
   while (true) {
-    if (type === HERO) {
-      posId = `${startPosition.row}:${startPosition.col}`
-    }else {
-      posId = `${Math.floor(Math.random() * rows)}:${Math.floor(Math.random() * cols)}`
-    }
+    posId = `${Math.floor(Math.random() * rows)}:${Math.floor(Math.random() * cols)}`
     const findPositionEl = root.find(`[data-id="${posId}"]`)
     if (findPositionEl.data().segment !== WALL && !findPositionEl.data().busy) {
       return findPositionEl

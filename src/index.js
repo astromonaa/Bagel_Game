@@ -12,8 +12,8 @@ const COLS_COUNT = 33
 const components = [
   Hero,
   ...generateComponents(Sword, 2),
-  ...generateComponents(Hp, 10),
-  ...generateComponents(Enemy, 10),
+  ...generateComponents(Hp, 6),
+  ...generateComponents(Enemy, 7),
 ]
 
 

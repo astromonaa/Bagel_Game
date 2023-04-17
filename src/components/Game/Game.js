@@ -25,7 +25,7 @@ export class Game extends DomListeners {
       const $el = $.create('div', Component.className, Component.healthLine)
       
       const component = new Component($el)
-      const $findPosition = getPositionEl(component.type, this.rowsCount, this.colsCount, this.$el)
+      const $findPosition = getPositionEl(this.rowsCount, this.colsCount, this.$el)
       component.init($findPosition, this)
       if (component.type === HERO) {
         this.hero = component
